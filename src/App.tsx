@@ -1,21 +1,32 @@
-import { useState } from "react";
+import React, { useState } from "react";
+import Props from "./Props";
 
-interface UserInfo {
-  id: number;
-  level: number;
-  login?: boolean;
-}
-
-function App() {
-  // 초기 값 설정
-  // 제네릭으로 타입변수 지정
+const App: React.FC = (): JSX.Element => {
   const [count, setCount] = useState<number>(0);
-  const [point, setPoint] = useState<number | null>(0);
 
-  // 객체형 타입 정의
-  const [user, setUser] = useState<UserInfo | null>(null);
+  const add = (): void => {
+    const temp = count + 1;
+    setCount(temp);
+  };
 
-  return <div>App</div>;
-}
+  const minus = (num: number): void => {
+    const temp = count - num;
+    setCount(temp);
+  };
+
+  return (
+    <div>
+      App
+      <Props
+        age={27}
+        name="Boo Seungkwan"
+        count={count}
+        setCount={setCount}
+        add={add}
+        minus={minus}
+      />
+    </div>
+  );
+};
 
 export default App;
