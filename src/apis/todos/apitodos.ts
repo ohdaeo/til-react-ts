@@ -1,20 +1,5 @@
-![ts](https://noticon-static.tammolo.com/dgggcrkxq/image/upload/v1566913457/noticon/eh4d0dnic4n1neth3fui.png)
-![React](https://noticon-static.tammolo.com/dgggcrkxq/image/upload/v1566557331/noticon/d5hqar2idkoefh6fjtpu.png)
-
-# axios
-
-```bash
-npm install axios
-npm install @types/axios
-```
-
-## 폴더 및 파일 구조
-
-- src/apis/todos/apitodos.ts
-  : 확장자 .ts
-
-```ts
 import { TodoType } from "../../types/todo";
+import axios from "axios";
 
 const todoURL = "https://jsonplaceholder.typicode.com/todos/";
 
@@ -23,7 +8,7 @@ type TodoType2 = Omit<TodoType, "id">;
 // 1개 호출
 const getTodo = async (id: number): Promise<TodoType | null> => {
   try {
-    const res = await axios.get<TodoType>(`todoURL${id}`);
+    const res = await axios.get<TodoType>(`${todoURL}${id}`);
     console.log(res.data);
     return res.data;
   } catch (error) {
@@ -122,21 +107,3 @@ const deleteTodo = async (id: number): Promise<boolean> => {
 };
 
 export { getTodo, getTodos, postTodo, putTodo, patchTodo, deleteTodo };
-```
-
-# types 폴더 관련 파일을 별도로 관리
-
-- `src/types/todo.ts`
-
-```ts
-export interface TodoType {
-  userId: number;
-  id?: number;
-  title: string;
-  completed: boolean;
-}
-```
-
-## API 호출 컴포넌트 생성
-
-- `src/component/Todo.tsx`

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Props from "./Props";
+import Todo from "./component/Todo";
 
 const App: React.FC = (): JSX.Element => {
   const [count, setCount] = useState<number>(0);
@@ -16,7 +17,7 @@ const App: React.FC = (): JSX.Element => {
 
   return (
     <div>
-      App
+      ♤ ♧ † £ ¢
       <Props
         age={27}
         name="Boo Seungkwan"
@@ -25,6 +26,7 @@ const App: React.FC = (): JSX.Element => {
         add={add}
         minus={minus}
       />
+      <Todo />
     </div>
   );
 };
